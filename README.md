@@ -5,6 +5,6 @@ sakura.js
 （必须）<script src="https://cdn.jsdelivr.net/gh/xihale/-test@master/sakura.js"></script>
 </pre>
 
-l2tp
-异地组网VPN
-详见：https://xihale.top/?id=11
+l2tp<br>
+异地组网VPN<br>
+详见：https://xihale.top/?id=11<br>
