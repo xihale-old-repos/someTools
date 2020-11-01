@@ -1,5 +1,5 @@
-if(!src)src="https://xihale-my.sharepoint.com/personal/xihale_xihale_top/Documents/%E5%AA%92%E4%BD%93/sakura.js/sakura.png";
-var stop, staticx; var img = new Image(); img.src = src; function Sakura(x, y, s, r, fn) { this.x = x; this.y = y; this.s = s; this.r = r; this.fn = fn; }
+var stop, staticx; var img = new Image(); if(!src){img.src="https://xihale-my.sharepoint.com/personal/xihale_xihale_top/Documents/%E5%AA%92%E4%BD%93/sakura.js/sakura.png";}
+else{img.src = src;} function Sakura(x, y, s, r, fn) { this.x = x; this.y = y; this.s = s; this.r = r; this.fn = fn; }
 Sakura.prototype.draw = function (cxt) {
     cxt.save(); var xc = 40 * this.s / 4; cxt.translate(this.x, this.y); cxt.rotate(this.r); cxt.drawImage(img, 0, 0, 40 * this.s, 40 * this.s)
     cxt.restore();
