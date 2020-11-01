@@ -42,11 +42,11 @@ var $_GET = (function(){
 function get_du(id,pngid)
 {
 	var s=$_GET['s'],du=document.getElementById("du");
-	var file="dutang.txt";
+	var file="https://cdn.jsdelivr.net/gh/xihale/-test@master/%E6%AF%92%E9%B8%A1%E6%B1%A4/dutang.txt";
 	if(s)
 	{
-		file=s+".txt";
-		document.getElementById(pngid).src="./img/logo_"+s+".png";
+		file="https://cdn.jsdelivr.net/gh/xihale/-test@master/%E6%AF%92%E9%B8%A1%E6%B1%A4/"+s+".txt";
+		document.getElementById(pngid).src="https://cdn.jsdelivr.net/gh/xihale/-test@master/%E6%AF%92%E9%B8%A1%E6%B1%A4/img/logo_"+s+".png";
 		du.className="btn btn-primary btn-filled btn-xs";
 		du.innerHTML="毒鸡汤";
 	}
