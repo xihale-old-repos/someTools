@@ -1,25 +1,13 @@
-<?php
-/**
- * Z-Blog with PHP.
- *
- * @author Z-BlogPHP Team
- * @version 2.0 2013-06-14
- */
-require '../function/c_system_base.php';
-
-ob_clean();
-// @TODO: Configuable
-?>
 var zbpConfig = {
-    bloghost: "<?php echo $zbp->host; ?>",
-    blogversion: "<?php echo $zbp->version; ?>",
-    ajaxurl: "<?php echo $zbp->ajaxurl; ?>",
-    cookiepath: "<?php echo $zbp->cookiespath; ?>",
+    bloghost: "https://xihale.top/",
+    blogversion: "162140",
+    ajaxurl: "https://xihale.top/zb_system/cmd.php?act=ajax&src=",
+    cookiepath: "/",
     lang: {
         error: {
-            72: "<?php echo $lang['error']['72']; ?>",
-            29: "<?php echo $lang['error']['29']; ?>",
-            46: "<?php echo $lang['error']['46']; ?>"
+            72: "名称不能为空或格式不正确",
+            29: "邮箱格式不正确，可能过长或为空",
+            46: "评论内容不能为空或过长"
         }
     },
     comment: {
@@ -73,11 +61,6 @@ var zbpConfig = {
         }
     }
 };
-<?php
-foreach ($GLOBALS['hooks']['Filter_Plugin_Html_Js_ZbpConfig'] as $fpname => &$fpsignal) {
-    $fpname();
-}
-?>
 var zbp = new ZBP(zbpConfig);
 
 var bloghost = zbp.options.bloghost;
@@ -87,34 +70,31 @@ var lang_comment_name_error = zbp.options.lang.error[72];
 var lang_comment_email_error = zbp.options.lang.error[29];
 var lang_comment_content_error = zbp.options.lang.error[46];
 
-<?php
-if (!isset($_GET['pluginonly'])) {
-    ?>
 $(function () {
 
     zbp.cookie.set("timezone", (new Date().getTimezoneOffset()/60)*(-1));
     var $cpLogin = $(".cp-login").find("a");
     var $cpVrs = $(".cp-vrs").find("a");
-    var $addinfo = zbp.cookie.get("addinfo<?php echo str_replace('/', '', $zbp->cookiespath); ?>");
+    var $addinfo = zbp.cookie.get("addinfo");
     if (!$addinfo){
         return ;
     }
     $addinfo = JSON.parse($addinfo);
 
     if ($addinfo.chkadmin){
-        $(".cp-hello").html("<?php echo $zbp->lang['msg']['welcome']; ?> " + $addinfo.useralias + " (" + $addinfo.levelname  + ")");
+        $(".cp-hello").html("欢迎 " + $addinfo.useralias + " (" + $addinfo.levelname  + ")");
         if ($cpLogin.length == 1 && $cpLogin.html().indexOf("[") > -1) {
-            $cpLogin.html("[<?php echo $zbp->lang['msg']['admin']; ?>]");
+            $cpLogin.html("[后台管理]");
         } else {
-            $cpLogin.html("<?php echo $zbp->lang['msg']['admin']; ?>");
+            $cpLogin.html("后台管理");
         }
     }
 
     if($addinfo.chkarticle){
         if ($cpLogin.length == 1 && $cpVrs.html().indexOf("[") > -1) {
-            $cpVrs.html("[<?php echo $zbp->lang['msg']['new_article']; ?>]");
+            $cpVrs.html("[新建文章]");
         } else {
-            $cpVrs.html("<?php echo $zbp->lang['msg']['new_article']; ?>");
+            $cpVrs.html("新建文章");
         }
         $cpVrs.attr("href", zbp.options.bloghost + "zb_system/cmd.php?act=ArticleEdt");
     }
@@ -124,29 +104,9 @@ $(function(){
   if (typeof inpNameVal === "undefined") {
     return;
   }
-  if (inpNameVal.trim() === "" || inpNameVal === "<?php echo $zbp->lang['msg']['anonymous']; ?>"){
+  if (inpNameVal.trim() === "" || inpNameVal === "访客"){
     zbp.userinfo.output();
   }
 });
-<?php
-}
-foreach ($GLOBALS['hooks']['Filter_Plugin_Html_Js_Add'] as $fpname => &$fpsignal) {
-    $fpname();
-}
 
-$s = ob_get_clean();
-$m = 'W/' . md5($s);
-
-header('Content-Type: application/x-javascript; charset=utf-8');
-header('Etag: ' . $m);
-
-if (isset($_SERVER["HTTP_IF_NONE_MATCH"]) && $_SERVER["HTTP_IF_NONE_MATCH"] == $m) {
-    if (isset($zbp->option['ZC_JS_304_ENABLE']) && $zbp->option['ZC_JS_304_ENABLE']) {
-        SetHttpStatusCode(304);
-        die;
-    }
-}
-
-echo $s;
-
-die();
+document.writeln("<script src='https://xihale.top/zb_users/plugin/UEditor/third-party/prism/prism.js' type='text/javascript'></script><link rel='stylesheet' type='text/css' href='https://xihale.top/zb_users/plugin/UEditor/third-party/prism/prism.css'/>");$(function(){var compatibility={as3:"actionscript","c#":"csharp",delphi:"pascal",html:"markup",xml:"markup",vb:"basic",js:"javascript",plain:"markdown",pl:"perl",ps:"powershell"};var runFunction=function(doms,callback){doms.each(function(index,unwrappedDom){var dom=$(unwrappedDom);var codeDom=$("<code>");if(callback)callback(dom);var languageClass="prism-language-"+function(classObject){if(classObject===null)return"markdown";var className=classObject[1];return compatibility[className]?compatibility[className]:className}(dom.attr("class").match(/prism-language-([0-9a-zA-Z]+)/));codeDom.html(dom.html()).addClass("prism-line-numbers").addClass(languageClass);dom.html("").addClass(languageClass).append(codeDom)})};runFunction($("pre.prism-highlight"));runFunction($('pre[class*="brush:"]'),function(preDom){var original;if((original=preDom.attr("class").match(/brush:([a-zA-Z0-9\#]+);/))!==null){preDom.get(0).className="prism-highlight prism-language-"+original[1]}});Prism.highlightAll()});
