@@ -1,5 +1,5 @@
 var stop, staticx; var img = new Image(),src;
-if(src==undefined){src="https://xihale-my.sharepoint.com/personal/xihale_xihale_top/Documents/%E5%AA%92%E4%BD%93/sakura.js/sakura.png";}
+if(src==undefined){src="https://link.gimhoy.com/sharepoint/aHR0cHM6Ly94aWhhbGUtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwveGloYWxlX3hpaGFsZV90b3AvRVRSM0VXMlIzUDlObll2YWxuUmRLVjBCbWlDM0QxcWVCV182Ukl1d0xiSlFBdz9lPW8wYm5OWg";}
 img.src=src;
  function Sakura(x, y, s, r, fn) { this.x = x; this.y = y; this.s = s; this.r = r; this.fn = fn; }
 Sakura.prototype.draw = function (cxt) {
