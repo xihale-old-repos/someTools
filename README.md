@@ -1,3 +1,6 @@
+<h2>lizi.js</h2>  
+把这段代码放在body后面或者footer里面！  
+<pre><script src="https://cdn.jsdelivr.net/gh/xihale/-test@master/lizi.js"></script></pre>  
 <h2>sakura.js</h2>
 <pre>
 (可有可无)<script>var src="要漂浮的图片url";</script>
