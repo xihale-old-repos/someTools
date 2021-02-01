@@ -11,6 +11,6 @@ function open_close(){
 function Randimage(src,n)
 {
     var k=Math.floor(Math.random()*10000)%(n+1);
-    document.body.style.backgroundImage="url(\"+src[k]+\")";
+    document.body.style.backgroundImage="url("+src[k]+")";
     document.body.style.backgroundSize="100% 100%";
 }
