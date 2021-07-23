@@ -10,4 +10,4 @@
 
 <h2>l2tp</h2><br>
 异地组网VPN<br>
-详见：https://xihale.top/?id=11<br>
+详见：https://zblog.xihale.top:444/?id=11<br>
